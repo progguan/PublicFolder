@@ -18,9 +18,12 @@ public class FileSystem {
 
         while (!que.isEmpty()) {
             FileNode fn = que.poll();
+            // if this is a file that meet our searching criteria, then return it.
             if (isTarget(fn, targetSize, suffix)) {
                 return fn;
             }
+            // if fn is not a target file, then check if is subfolders have the target file, do bfs
+            // note that only if the file is a folder and its size is larger than our targetSize will we continue to search this folder
             for (FileNode child : fn.subFilesOrFolders.values()) {
                 if (child.isFolder && child.size > targetSize) {
                     que.offer(child);
