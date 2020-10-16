@@ -12,8 +12,10 @@ public class TextArrangement {
         while (idx < len) {
             // words with one space in between
             int validLen = words[idx].length();
+            // index of the first word in the next line
             int nextFirstIdx = idx + 1;
 
+            // get the right word index of the first word in next line
             while (nextFirstIdx < len) {
                 if (validLen + 1 + words[nextFirstIdx].length() > width) break;
                 validLen += 1 + words[nextFirstIdx].length();
